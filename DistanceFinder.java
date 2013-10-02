@@ -1,5 +1,12 @@
 public class DistanceFinder {
 	public static void main(String[] args) {
+		
+		//Issues I found:
+		//1)import the argsprocessor from the CSE repos
+		//2)on line 151, you reference 'j' which does not exist.  did you mean 'i' from the encompassing FOR loop?
+		//3)you have multiple errors from lines 168 to 179 where you reference variables which are not yet defined
+		//--Aaron
+		
 		//ap.nextInt numberOfProblems= ap.nextInt("How many problems are there?")
 		int numberOfProblems = 20;
 		int i=0;
@@ -33,74 +40,109 @@ public class DistanceFinder {
 
 					int string2 = ap.nextInt("Best Case Run Time?");
 
-					if(string2==ok){
+					switch(string2)
+					{
+					case ok:
 						bestCaseValue[i]=0;
-					}else if(string2==oLogLogN){
+						break;
+					case oLogLogN:
 						bestCaseValue[i]=1;
-					} else if(string2==oLogN){
+						break;
+					case oLogN:
 						bestCaseValue[i]=2;
-					}else if(string2==oNC){
+						break;
+					case oNC:
 						bestCaseValue[i]=3;
-					}else if(string2==oN){
+						break;
+					case oN:
 						bestCaseValue[i]=4;
-					}else if(string2==oNLogStarN){
+						break;
+					case oNLogStarN:
 						bestCaseValue[i]=5;
-					}else if(string2==oNLogN){
+						break;
+					case oNLogN:
 						bestCaseValue[i]=6;
-					}else if(string2==oNK){
+						break;
+					case oNK:
 						bestCaseValue[i]=7;
-					}else if(string2==oCN){
+						break;
+					case oCN:
 						bestCaseValue[i]=8;
-					}else if(string2==oNFactorial){
+						break;
+					case oNFactorial:
 						bestCaseValue[i]=9;
+						break;
 					}
 
 					int string3 = ap.nextString("Average Case Run Time?");
 
-					if(string3==ok){
+					switch(string3)
+					{
+					case ok:
 						averageCaseValue[i]=0;
-					}else if(string3==oLogLogN){
+						break;
+					case oLogLogN:
 						averageCaseValue[i]=1;
-					} else if(string3==oLogN){
+						break;
+					case oLogN:
 						averageCaseValue[i]=2;
-					}else if(string3==oNC){
+						break;
+					case oNC:
 						averageCaseValue[i]=3;
-					}else if(string3==oN){
+						break;
+					case oN:
 						averageCaseValue[i]=4;
-					}else if(string3==oNLogStarN){
+						break;
+					case oNLogStarN:
 						averageCaseValue[i]=5;
-					}else if(string3==oLogLogN){
+						break;
+					case oNLogN:
 						averageCaseValue[i]=6;
-					}else if(string3==oNK){
+						break;
+					case oNK:
 						averageCaseValue[i]=7;
-					}else if(string3==oCN){
+						break;
+					case oCN:
 						averageCaseValue[i]=8;
-					}else if(string3==oNFactorial){
+						break;
+					case oNFactorial:
 						averageCaseValue[i]=9;
+						break;
 					}
-
 					int string4 = ap.nextString("Worst Case Run Time?");
 
-					if(string4==ok){
+					switch(string4)
+					{
+					case ok:
 						worstCaseValue[i]=0;
-					}else if(string4==oLogLogN){
+						break;
+					case oLogLogN:
 						worstCaseValue[i]=1;
-					} else if(string4==oLogN){
+						break;
+					case oLogN:
 						worstCaseValue[i]=2;
-					}else if(string4==oNC){
+						break;
+					case oNC:
 						worstCaseValue[i]=3;
-					}else if(string4==oN){
+						break;
+					case oN:
 						worstCaseValue[i]=4;
-					}else if(string4==oNLogStarN){
+						break;
+					case oNLogStarN:
 						worstCaseValue[i]=5;
-					}else if(string4==oLogLogN){
+						break;
+					case oNLogN:
 						worstCaseValue[i]=6;
-					}else if(string4==oNK){
+						break;
+					case oNK:
 						worstCaseValue[i]=7;
-					}else if(string4==oCN){
+						break;
+					case oCN:
 						worstCaseValue[i]=8;
-					}else if(string4==oNFactorial){
+						break;
+					case oNFactorial:
 						worstCaseValue[i]=9;
+						break;
 					}
 
 					int string5 = ap.nextString("Lines of Code");
@@ -123,8 +165,8 @@ public class DistanceFinder {
 
 
 				// here the program needs to take the elements of two random problems that are input into the system
-				
-				
+
+
 				double pOrNPDistance = (double) Math.abs(Math.pow((x2-x1),2));
 				double BestCaseDistance = (double) Math.abs(Math.pow((y2-y1),2));
 				double AverageCaseDistance = (double) Math.abs(Math.pow((z2-z1),2));
@@ -155,3 +197,4 @@ public class DistanceFinder {
 
 		}
 	}
+}
