@@ -151,7 +151,7 @@ public class DistanceFinder {
 					int string6 = ap.nextString("Run Time Constant");
 					runtimeConstantValue[i]=string6;
 					Math.round(string6);
-					System.out.println(i + ", " + pOrNPValue[j]+ ", " + bestCaseValue[j]+ ", " + averageCaseValue[j]+ ", " + worstCaseValue[j]+ ", " + linesOfCodeValue[j] + ", " + runtimeConstantValue[j]);
+					System.out.println(i + ", " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i]);
 				}
 
 
