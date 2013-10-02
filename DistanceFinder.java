@@ -3,7 +3,6 @@ public class DistanceFinder {
 		//ap.nextInt numberOfProblems= ap.nextInt("How many problems are there?")
 		int numberOfProblems = 20;
 		int i=0;
-		int penis=4;
 		int [] pOrNPValue = new int [numberOfProblems];
 		int [] bestCaseValue = new int [numberOfProblems];
 		int [] averageCaseValue = new int [numberOfProblems];
@@ -36,71 +35,71 @@ public class DistanceFinder {
 
 					if(string2==ok){
 						bestCaseValue[i]=0;
-					}else if(string2=oLogLogN){
+					}else if(string2==oLogLogN){
 						bestCaseValue[i]=1;
-					} else if(string2=oLogN){
+					} else if(string2==oLogN){
 						bestCaseValue[i]=2;
-					}else if(string2=oNC){
+					}else if(string2==oNC){
 						bestCaseValue[i]=3;
-					}else if(string2=oN){
+					}else if(string2==oN){
 						bestCaseValue[i]=4;
-					}else if(string2=oNLogStarN){
+					}else if(string2==oNLogStarN){
 						bestCaseValue[i]=5;
-					}else if(string2=oNLogN){
+					}else if(string2==oNLogN){
 						bestCaseValue[i]=6;
-					}else if(string2=oNK){
+					}else if(string2==oNK){
 						bestCaseValue[i]=7;
-					}else if(string2=oCN){
+					}else if(string2==oCN){
 						bestCaseValue[i]=8;
-					}else if(string2=oNFactorial){
+					}else if(string2==oNFactorial){
 						bestCaseValue[i]=9;
 					}
 
-					String string3 = ap.nextString("Average Case Run Time?");
+					int string3 = ap.nextString("Average Case Run Time?");
 
-					if(string3=ok){
+					if(string3==ok){
 						averageCaseValue[i]=0;
-					}else if(string3=oLogLogN){
+					}else if(string3==oLogLogN){
 						averageCaseValue[i]=1;
-					} else if(string3=oLogN){
+					} else if(string3==oLogN){
 						averageCaseValue[i]=2;
-					}else if(string3=oNC){
+					}else if(string3==oNC){
 						averageCaseValue[i]=3;
-					}else if(string3=oN){
+					}else if(string3==oN){
 						averageCaseValue[i]=4;
-					}else if(string3=oNLogStarN){
+					}else if(string3==oNLogStarN){
 						averageCaseValue[i]=5;
-					}else if(string3=oLogLogN){
+					}else if(string3==oLogLogN){
 						averageCaseValue[i]=6;
-					}else if(string3=oNK){
+					}else if(string3==oNK){
 						averageCaseValue[i]=7;
-					}else if(string3=oCN){
+					}else if(string3==oCN){
 						averageCaseValue[i]=8;
-					}else if(string3=oNFactorial){
+					}else if(string3==oNFactorial){
 						averageCaseValue[i]=9;
 					}
 
-					String string4 = ap.nextString("Worst Case Run Time?");
+					int string4 = ap.nextString("Worst Case Run Time?");
 
-					if(string4=ok){
+					if(string4==ok){
 						worstCaseValue[i]=0;
-					}else if(string4=oLogLogN){
+					}else if(string4==oLogLogN){
 						worstCaseValue[i]=1;
-					} else if(string4=oLogN){
+					} else if(string4==oLogN){
 						worstCaseValue[i]=2;
-					}else if(string4=oNC){
+					}else if(string4==oNC){
 						worstCaseValue[i]=3;
-					}else if(string4=oN){
+					}else if(string4==oN){
 						worstCaseValue[i]=4;
-					}else if(string3=oNLogStarN){
+					}else if(string4==oNLogStarN){
 						worstCaseValue[i]=5;
-					}else if(string4=oLogLogN){
+					}else if(string4==oLogLogN){
 						worstCaseValue[i]=6;
-					}else if(string4=oNK){
+					}else if(string4==oNK){
 						worstCaseValue[i]=7;
-					}else if(string4=oCN){
+					}else if(string4==oCN){
 						worstCaseValue[i]=8;
-					}else if(string4=oNFactorial){
+					}else if(string4==oNFactorial){
 						worstCaseValue[i]=9;
 					}
 
