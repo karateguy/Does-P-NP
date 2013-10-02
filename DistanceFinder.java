@@ -103,10 +103,10 @@ public class DistanceFinder {
 						worstCaseValue[i]=9;
 					}
 
-					String string5 = ap.nextString("Lines of Code");
+					int string5 = ap.nextString("Lines of Code");
 					linesOfCodeValue[i]=string5;
 
-					double string6 = ap.nextString("Run Time Constant");
+					int string6 = ap.nextString("Run Time Constant");
 					runtimeConstantValue[i]=string6;
 					Math.round(string6);
 					System.out.println(i + ", " + pOrNPValue[j]+ ", " + bestCaseValue[j]+ ", " + averageCaseValue[j]+ ", " + worstCaseValue[j]+ ", " + linesOfCodeValue[j] + ", " + runtimeConstantValue[j]);
