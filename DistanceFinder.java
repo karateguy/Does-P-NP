@@ -122,8 +122,9 @@ public class DistanceFinder {
 
 
 
-
-
+				// here the program needs to take the elements of two random problems that are input into the system
+				
+				
 				double pOrNPDistance = (double) Math.abs(Math.pow((x2-x1),2));
 				double BestCaseDistance = (double) Math.abs(Math.pow((y2-y1),2));
 				double AverageCaseDistance = (double) Math.abs(Math.pow((z2-z1),2));
