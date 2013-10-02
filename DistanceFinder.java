@@ -3,6 +3,7 @@ public class DistanceFinder {
 		//ap.nextInt numberOfProblems= ap.nextInt("How many problems are there?")
 		int numberOfProblems = 20;
 		int i=0;
+		int test=4;
 		int [] pOrNPValue = new int [numberOfProblems];
 		int [] bestCaseValue = new int [numberOfProblems];
 		int [] averageCaseValue = new int [numberOfProblems];
