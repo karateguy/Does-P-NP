@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import SupportPackage.ArgsProcessor;
 
 public class DistanceFinder {
 	public static void main(String[] args) {
@@ -8,9 +9,9 @@ public class DistanceFinder {
 		//2)on line 151, you reference 'j' which does not exist.  did you mean 'i' from the encompassing FOR loop?
 		//3)you have multiple errors from lines 168 to 179 where you reference variables which are not yet defined
 		//--Aaron
-
-		//ap.nextInt numberOfProblems= ap.nextInt("How many problems are there?")
-		int numberOfProblems = 20;
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int numberOfProblems= ap.nextInt("How many problems are there?");
+		//int numberOfProblems = 20;
 		//int i=0; <-i'm deleting this because you only use it within the FOR loop as an iterator
 		int [] pOrNPValue = new int [numberOfProblems];
 		int [] bestCaseValue = new int [numberOfProblems];
@@ -18,23 +19,24 @@ public class DistanceFinder {
 		int [] worstCaseValue = new int [numberOfProblems];
 		int [] linesOfCodeValue = new int [numberOfProblems];
 		int [] runtimeConstantValue = new int [numberOfProblems];
-
-		int ok = 0;
-		int oLogLogN=1;
-		int oLogN=2;
-		int oNC=3;
-		int oN=4;
-		int oNLogStarN=5;
-		int oNLogN=6;
-		int oLogNFactorial=oNLogN;
-		int oNK=7;
-		int oCN=8;
-		int oNFactorial=9;
+		
+		//Note: these numbers CANNOT be changed mid program
+		final int ok = 0;
+		final int oLogLogN=1;
+		final int oLogN=2;
+		final int oNC=3;
+		final int oN=4;
+		final int oNLogStarN=5;
+		final int oNLogN=6;
+		final int oLogNFactorial=oNLogN;
+		final int oNK=7;
+		final int oCN=8;
+		final int oNFactorial=9;
 
 		for (int i=0;i<numberOfProblems;i++){
 
 			String string1= ap.nextString("P or NP?");
-			if(string1=P){
+			if(string1=="P"){
 				pOrNPValue[i]=0;
 			}else{
 				pOrNPValue[i]=1;
@@ -76,7 +78,7 @@ public class DistanceFinder {
 					break;
 				}
 
-				int string3 = ap.nextString("Average Case Run Time?");
+				int string3 = ap.nextInt("Average Case Run Time?");
 
 				switch(string3)
 				{
@@ -111,7 +113,7 @@ public class DistanceFinder {
 					averageCaseValue[i]=9;
 					break;
 				}
-				int string4 = ap.nextString("Worst Case Run Time?");
+				int string4 = ap.nextInt("Worst Case Run Time?");
 
 				switch(string4)
 				{
@@ -147,10 +149,10 @@ public class DistanceFinder {
 					break;
 				}
 
-				int string5 = ap.nextString("Lines of Code");
+				int string5 = ap.nextInt("Lines of Code");
 				linesOfCodeValue[i]=string5;
 
-				int string6 = ap.nextString("Run Time Constant");
+				int string6 = ap.nextInt("Run Time Constant");
 				runtimeConstantValue[i]=string6;
 				Math.round(string6);
 				System.out.println(i + ", " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i]);
@@ -189,7 +191,7 @@ public class DistanceFinder {
 				double dist = 0.0;
 				for(int k=0; k<6; k++)
 				{
-					dist+=Math.pow((probs[i][k]-probs[j][k]) , 2);
+					dist+=Math.pow( (double) (probs[i][k]-probs[j][k]) , 2.0);
 				}
 				distance[i][j]=Math.sqrt(dist);
 				System.out.println("Distance between points = " + distance[i][j] );
