@@ -168,33 +168,6 @@ public class DistanceFinder {
 
 			// here the program needs to take the elements of two random problems that are input into the system
 
-
-			double pOrNPDistance = (double) Math.abs(Math.pow((x2-x1),2));
-			double BestCaseDistance = (double) Math.abs(Math.pow((y2-y1),2));
-			double AverageCaseDistance = (double) Math.abs(Math.pow((z2-z1),2));
-			double WorstCaseDistance = (double) Math.abs(Math.pow((z2-z1),2));
-			double linesOfCodeDistance = (double) Math.abs(Math.pow((z2-z1),2));
-			double runTimeConstantDistance = (double) Math.abs(Math.pow((z2-z1),2));
-
-
-
-
-
-			double totalDistance = (double) Math.sqrt(yDistance+xDistance+zDistance);
-
-			//else if(x1=originX && y1=originY && z1=originZ){
-			//double xDistance = (double) Math.abs(Math.pow((x2),2));
-			//double yDistance = (double) Math.abs(Math.pow((y2),2));
-			//double zDistance = (double) Math.abs(Math.pow((z2),2));
-			//double finalDistance = (double) Math.sqrt(yDistance+xDistance);
-			//}else if (x2=originX && y2=originY && z2=originZ){
-			//double xDistance = (double) Math.abs(Math.pow((x1),2));
-			//double yDistance = (double) Math.abs(Math.pow((y1),2));
-			//double zDistance = (double) Math.abs(Math.pow((z1),2));
-			//double finalDistance = (double) Math.sqrt(yDistance+xDistance);
-			//}
-
-			System.out.println("Distance between points = " + totalDistance);
 		}
 		int [][] probs = new int[numberOfProblems][6];
 		for(int i = 0; i<numberOfProblems; i++)
@@ -216,12 +189,13 @@ public class DistanceFinder {
 				double dist = 0.0;
 				for(int k=0; k<6; k++)
 				{
-					dist+=Math.pow( (probs[i][k]-probs[j][k]) , 2);
+					dist+=Math.pow((probs[i][k]-probs[j][k]) , 2);
 				}
 				distance[i][j]=Math.sqrt(dist);
+				System.out.println("Distance between points = " + distance[i][j] );
 			}
 		}
-
+		
 
 
 	}
