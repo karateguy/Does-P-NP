@@ -35,10 +35,13 @@ public class DistanceFinder {
 		for (int i=0;i<numberOfProblems;i++){
 
 			String string1= ap.nextString("P or NP?");
-			if(string1=="P"){
+			if(string1=="P" || string1=="p" || string1=="0"){
 				pOrNPValue[i]=0;
 			}else{
 				pOrNPValue[i]=1;
+				/*did you mean to close your else loop here?  the way you have it, P problems (pOrNP==0) do not get evaluated below
+				 * 
+				 */
 
 
 				int string2 = ap.nextInt("Best Case Run Time?");
@@ -154,7 +157,7 @@ public class DistanceFinder {
 				int string6 = ap.nextInt("Run Time Constant");
 				runtimeConstantValue[i]=string6;
 				Math.round(string6);
-				System.out.println(i + ", " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i]);
+				System.out.println(i + ": " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i]);
 			}
 
 
