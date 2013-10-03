@@ -28,7 +28,6 @@ public class DistanceFinder {
 		final int oN=4;
 		final int oNLogStarN=5;
 		final int oNLogN=6;
-		final int oLogNFactorial=oNLogN;
 		final int oNK=7;
 		final int oCN=8;
 		final int oNFactorial=9;
@@ -157,15 +156,6 @@ public class DistanceFinder {
 				Math.round(string6);
 				System.out.println(i + ", " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i]);
 			}
-
-
-			double one =  pOrNPValue[i];
-			double two = (double) bestCaseValue[i];
-			double three = (double) averageCaseValue[i];
-			double four = (double) worstCaseValue[i];
-			double five = (double) linesOfCodeValue[i];
-			double six = (double) runtimeConstantValue[i];
-
 
 
 			// here the program needs to take the elements of two random problems that are input into the system
