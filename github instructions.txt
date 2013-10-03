@@ -1,0 +1,67 @@
+INSTALATION INSTRUCTIONS:
+1.	create an account on gihub.com
+2.	find the user 'karateguy'  (this is channing)
+3.	open his "Does-P-NP" repository
+4.	Fork the repository (there's a button labeled fork near the top right corner of the page
+5.	install the github client (and anything else that it it needs you to install.  Make sure that it installs command line tools)
+6.	open the github client and sign in.  under "my repositories" you should find the "Does-P-NP" repo
+7.	clone the repo and make a local copy somewhere on your computer.  remember where this is.
+8.	If you have a Mac, skip to step 11.  on pc, continue to step 9
+9.	right click on the name of the local repo (from step 7) in the github client
+10.	click "open a shell here" (then skip to step 13)
+11.	Mac instructions: open your repository by clicking the star by its name under local repositories
+12.	click "open in terminal" under repositories at the top of your screen
+13.	type:   git remote add upstream https://github.com/karateguy/Does-P-NP.git
+(this will add a branch for receiving updates from channing's master copy)
+14.	type: git fetch upstream
+(this will update your files from channing)
+15.	type: git merge upstream/master
+(this will apply updates to your local copy)
+16.	Note: you wont have to update like that anymore unless you really want to
+17.	install eclipse if you havent already (if you have, skip step 19)
+18.	set a workplace wherever
+19.	if you have Egit installed, skip steps 20-26
+20.	under "help" click "install new software"
+21.	 in the Work with field, type http://download.eclipse.org/egit/updates
+22.	click add, and title the site whatever you want (although "EGit Repository" makes a lot of sense)
+23.	check the encompasing box for "Eclipse Git Team Provider"  you do not need JGit or anything else listed
+24.	install the software through eclipse
+25.	the Git addon will ask you to restart eclipse and to sign in to your github account.  do all these things
+26.	enter the Git Repository perspective by clicking "Git Repository Exploring" in the top right of eclipse
+27.	click the button to "Add an existing local repository to this view"
+28.	add the folder you created through github in step 7.  (add the folder itself, not the contents)
+29.	switch to the Java perspective by clicking "Java" in the top right
+30.	click File->New->Java Project
+31.	uncheck the box labeled "use default destination"
+32.	enter the folder path from step 28 as your project destination
+33.	click next and create the project
+34.	Done!  A working copy of the project should appear in the java perspective
+(Do all your work on stuff inside of the java perspective)
+
+
+How to send changes you make to the master copy:
+1.	save all of your work
+2.	right click on the encompassing folder labeled "Does-P-NP" in eclipse within the Java perspective
+3.	click Team->Commit
+4.	type a comment in the large box at the top to describe the changes you made
+5.	there is a list of files you changed in the bottom of the commit window.  check all files you want to commit
+6.	click "Commit and Push"
+7.	Enter your github info if prompted.  otherwise just let it run
+8.	sign into github.com  and navigate to your copy of the Does-P-NP repo
+9.	click "Pull request" on the right side of the page 
+10.	click "New pull request"
+11.	title your request and send the request.
+12.	wait for channing to approve the request and merge it with the master copy
+
+
+How to receive updates from the master copy:
+1.	open eclipse
+2.	Consider committing any unsaved work.  The update will overwrite any uncommitted changes on files changed in the update
+3.	enter the Git Repository perspective
+4.	right click on the repository name and click "fetch…"
+5.	select Upstream from the dropdown list at the top
+6.	click finish. Eclipse will now download an updated version of the master project from channing's github
+7.	right click on the repository name and click "merge"
+8.	double click "upstream/master" from the box at the top
+9.	Eclipse will apply updates to your local copy of the project. 
+10.	any files changed in the update that were open in eclipse need to be reloaded
