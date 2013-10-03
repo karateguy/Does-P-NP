@@ -11,15 +11,15 @@ public class DistanceFinder {
 		//--Aaron
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int numberOfProblems= ap.nextInt("How many problems are there?");
-		//int numberOfProblems = 20;
-		//int i=0; <-i'm deleting this because you only use it within the FOR loop as an iterator
+
+		int i =0;
 		int [] pOrNPValue = new int [numberOfProblems];
 		int [] bestCaseValue = new int [numberOfProblems];
 		int [] averageCaseValue = new int [numberOfProblems];
 		int [] worstCaseValue = new int [numberOfProblems];
 		int [] linesOfCodeValue = new int [numberOfProblems];
 		int [] runtimeConstantValue = new int [numberOfProblems];
-		
+
 		//Note: these numbers CANNOT be changed mid program
 		final int ok = 0;
 		final int oLogLogN=1;
@@ -28,12 +28,11 @@ public class DistanceFinder {
 		final int oN=4;
 		final int oNLogStarN=5;
 		final int oNLogN=6;
-		final int oLogNFactorial=oNLogN;
 		final int oNK=7;
 		final int oCN=8;
 		final int oNFactorial=9;
 
-		for (int i=0;i<numberOfProblems;i++){
+		for (i=0;i<numberOfProblems;i++){
 
 			String string1= ap.nextString("P or NP?");
 			if(string1=="P"){
@@ -159,20 +158,11 @@ public class DistanceFinder {
 			}
 
 
-			double one =  pOrNPValue[i];
-			double two = (double) bestCaseValue[i];
-			double three = (double) averageCaseValue[i];
-			double four = (double) worstCaseValue[i];
-			double five = (double) linesOfCodeValue[i];
-			double six = (double) runtimeConstantValue[i];
-
-
-
 			// here the program needs to take the elements of two random problems that are input into the system
 
 		}
 		int [][] probs = new int[numberOfProblems][6];
-		for(int i = 0; i<numberOfProblems; i++)
+		for(i = 0; i<numberOfProblems; i++)
 		{
 			probs[i][0]=pOrNPValue[i];
 			probs[i][1]=bestCaseValue[i];
@@ -183,7 +173,7 @@ public class DistanceFinder {
 		}
 		double [][] distance = new double [numberOfProblems][numberOfProblems];
 		//speaking of inefficiency....look at this next part
-		for(int i = 0; i<numberOfProblems; i++)
+		for(i = 0; i<numberOfProblems; i++)
 		{
 			Arrays.fill(distance[i], Double.NaN); //REMEMBER
 			for(int j = (i+1); j<numberOfProblems; j++) //REMEMBER
@@ -194,11 +184,9 @@ public class DistanceFinder {
 					dist+=Math.pow( (double) (probs[i][k]-probs[j][k]) , 2.0);
 				}
 				distance[i][j]=Math.sqrt(dist);
-				System.out.println("Distance between points = " + distance[i][j] );
+				System.out.println("Distance between points = " + distance[i][j]);
 			}
 		}
 		
-
-
 	}
 }
