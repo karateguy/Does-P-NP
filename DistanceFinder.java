@@ -194,7 +194,7 @@ public class DistanceFinder {
 					dist+=Math.pow( (double) (probs[i][k]-probs[j][k]) , 2.0);
 				}
 				distance[i][j]=Math.sqrt(dist);
-				System.out.println("Distance between points = " + distance[i][j] );
+				System.out.println("Distance between points "+i+" and "+j+" = " + distance[i][j] );
 			}
 		}
 		
