@@ -1,14 +1,10 @@
 import java.util.Arrays;
+import java.io.*;
 import SupportPackage.ArgsProcessor;
 
 public class DistanceFinder {
 	public static void main(String[] args) {
 
-		//Issues I found:
-		//1)import the argsprocessor from the CSE repos
-		//2)on line 151, you reference 'j' which does not exist.  did you mean 'i' from the encompassing FOR loop?
-		//3)you have multiple errors from lines 168 to 179 where you reference variables which are not yet defined
-		//--Aaron
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int numberOfProblems= ap.nextInt("How many problems are there?");
 		//int numberOfProblems = 20;
@@ -19,7 +15,9 @@ public class DistanceFinder {
 		int [] worstCaseValue = new int [numberOfProblems];
 		int [] linesOfCodeValue = new int [numberOfProblems];
 		int [] runtimeConstantValue = new int [numberOfProblems];
-		
+
+
+
 		//Note: these numbers CANNOT be changed mid program
 		final int ok = 0;
 		final int oLogLogN=1;
@@ -190,7 +188,46 @@ public class DistanceFinder {
 				System.out.println("Distance between points "+i+" and "+j+" = " + distance[i][j] );
 			}
 		}
-		
+		try
+		{
+			PrintWriter writer = new PrintWriter("DistanceOutput.txt","UTF-8");
+			writer.write("#\tP-NP\tBest\tAvg\tWorst\tlines\tConstant\n");
+			writer.println();
+			for(int i=0; i<numberOfProblems; i++)
+			{
+				writer.write(""+(i+1) +"\t");
+				for(int j=0; j<6; j++)
+				{
+					writer.write(""+probs[i][j]+"\t");
+				}
+			}
+			writer.println();
+			writer.write("Distances:");
+			writer.println();
+			for(int i=0; i<numberOfProblems; i++)
+			{
+				for(int j=(i+1); j<numberOfProblems; j++)
+				{
+					writer.write(""+(i+1)+" to "+(j+1)+":\t");
+					writer.write(""+distance[i][j]);
+					writer.println();
+				}
+			}
+			writer.close();
+		}
+		catch(FileNotFoundException bad)
+		{
+			System.out.println("SHIT!");
+		}
+		catch(UnsupportedEncodingException alsoBad)
+		{
+			System.out.println("FUCK!");
+		}
+		finally
+		{
+			System.out.println("Dumped to file");
+		}
+
 
 
 	}
