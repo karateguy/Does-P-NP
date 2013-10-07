@@ -3,7 +3,7 @@ import java.io.*;
 import SupportPackage.ArgsProcessor;
 
 public class DistanceFinder {
-	public static void main(String[] args) {
+	public static void main(String [] args) {
 
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int numberOfProblems= ap.nextInt("How many problems are there?");
