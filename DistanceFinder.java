@@ -16,9 +16,9 @@ public class DistanceFinder {
 		int [] linesOfCodeValue = new int [numberOfProblems];
 		int [] runtimeConstantValue = new int [numberOfProblems];
 
-		int j =0;
-		int k =0;
-		
+		int l =0;
+		int m =0;
+
 
 
 		//Note: these numbers CANNOT be changed mid program
@@ -44,9 +44,9 @@ public class DistanceFinder {
 				 * 
 				 */
 				if(string1=="P" || string1=="p" || string1=="0"){
-					j++;
+					l++;
 				}else{
-					k++;
+					m++;
 				}
 
 				int string2 = ap.nextInt("Best Case Run Time?");
@@ -234,8 +234,8 @@ public class DistanceFinder {
 		{
 			System.out.println("Dumped to file");
 		}
-
-
+		System.out.println("Number of P Problems = "+ l);
+		System.out.println("Number of P Problems = "+ m);
 
 	}
 }
