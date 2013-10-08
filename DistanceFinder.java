@@ -16,6 +16,9 @@ public class DistanceFinder {
 		int [] linesOfCodeValue = new int [numberOfProblems];
 		int [] runtimeConstantValue = new int [numberOfProblems];
 
+		int j =0;
+		int k =0;
+		
 
 
 		//Note: these numbers CANNOT be changed mid program
@@ -40,7 +43,11 @@ public class DistanceFinder {
 				/*did you mean to close your else loop here?  the way you have it, P problems (pOrNP==0) do not get evaluated below
 				 * 
 				 */
-
+				if(string1=="P" || string1=="p" || string1=="0"){
+					j++;
+				}else{
+					k++;
+				}
 
 				int string2 = ap.nextInt("Best Case Run Time?");
 
