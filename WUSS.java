@@ -1,9 +1,10 @@
 import SupportPackage.*;
 import java.io.*;
 import java.util.Arrays;
-public class WUSS {
+public class WUSS 
+{
 
-	public static void main(String[] args) throws IOException
+	public static double[] engine(String[] args) throws IOException
 	{
 		ArgsProcessor ap = new ArgsProcessor(args);
 		final int _K = ap.nextInt("K-Size");
@@ -35,6 +36,15 @@ public class WUSS {
 				matches[0][i]=new piece(mindoc.fingerprints[i]);
 				matches[1][i]=new piece(maxdoc.fingerprints[Arrays.asList(DocData.namezipper(maxdoc.fingerprints)).indexOf(mindoc.fingerprints[i].val)]);
 			}
+			/*for(int j=0; j<maxdoc.fingerprints.length; j++)
+			{
+				if(mindoc.fingerprints[i].val==maxdoc.fingerprints[i].val)
+				{
+					truesize++;
+					matches[0][i]=new piece(mindoc.fingerprints[i]);
+					matches[1][i]=new piece(maxdoc.fingerprints[j]);
+				}
+			}*/
 		}
 		
 		int reindex=0;
@@ -61,6 +71,8 @@ public class WUSS {
 			//System.out.println(""+(double)(Math.abs(rel_a-rel_b)));
 			double blerg=((double)(Math.abs(rel_a-rel_b)));
 			blerg/=rel_b;
+			//System.out.println(blerg);
+			if(Double.isNaN(blerg)) blerg=0.0;
 			avgDist+=blerg;
 		}
 		//System.out.println(avgDist);
@@ -68,7 +80,7 @@ public class WUSS {
 		System.out.println("Fingerprinting score= "+(100.0*fscore)+"% similar ("+truesize+" matches)");
 		System.out.println("Fingerprint location score= "+(100.0*avgDist)+"%");
 		System.out.println("Length score= "+(100.0*lscore)+"% similarity in length");
-		double decision=(fscore-(avgDist/2.0))*0.85;
+		double decision=(fscore-(avgDist/4.0))*.85;
 		decision+=lscore*.15;
 		System.out.println("Decision score: "+decision);
 		String comment;
@@ -79,8 +91,39 @@ public class WUSS {
 		else if(decision>=0.1) comment="Files show little resemblance";
 		else comment="Files show almost no similarity";
 		System.out.println(comment);
-		
+		double output[]= {fscore, avgDist, lscore, decision};
+		return output;
 		
 	}
 
+	public static void main(String[] args)
+	{
+		try
+		{
+			engine(args);
+		}
+		catch(IOException problem)
+		{
+			System.out.println("Encountered an I/O Exception.  Program terminated");
+		}
+	}
+
+	public static void dumper(String[] args, String dumpPath)
+	{
+		PrintWriter out = null;
+		try
+		{
+			double [] reciever = engine(args);
+			out=new PrintWriter(new FileWriter(dumpPath));
+			for(int i = 0; i<4; i++) out.write(""+reciever[i]+" ");
+		}
+		catch(IOException problem)
+		{
+			System.out.println("Encountered an I/O Exception.  Program terminated");
+		}
+		finally
+		{
+			out.close();
+		}
+	}
 }

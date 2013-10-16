@@ -7,22 +7,17 @@ public class DocData {
 
 	public piece[] fingerprints;
 	public int docsize;
-	public String normalized;
+	private String normalized;
 	public static String normalize(String bad)
 	{
 		String lower = bad.toLowerCase();
-		/*char [] unformatted = lower.toCharArray();
-		for(int i=0; i<lower.length(); i++ )
-		{
-			if(unformatted[i]==' ') return "";
-		}*/
 		String last="";
 		String next=lower;
 		do
 		{
 			last=next;
-			next=next.replaceAll("  ", " ");
-			next=next.replaceAll(" \n", " ");
+			next=next.replaceAll(" ", "");
+			//next=next.replaceAll(" \n", " ");
 			next=next.replaceAll("\n", "");
 		}
 		while(next!=last);
@@ -31,10 +26,7 @@ public class DocData {
 	public static String[] namezipper(piece[] pieces)
 	{
 		String [] names = new String[pieces.length];
-		for(int i=0; i<pieces.length; i++)
-		{
-			names[i]=new String(pieces[i].val);
-		}
+		for(int i=0; i<pieces.length; i++) names[i]=new String(pieces[i].val);
 		return names;
 	}
 	public static int[] loczipper(piece[] pieces)
@@ -43,7 +35,6 @@ public class DocData {
 		for(int i=0; i<pieces.length; i++) locs[i]=pieces[i].loc;
 		return locs;
 	}
-
 	public static piece[] unduplicate(piece[] first)
 	{
 		piece[] intermediate = new piece [first.length];
@@ -121,7 +112,7 @@ public class DocData {
 			}
 			temp[i].val=grams[myindex];
 			grams[myindex]="";
-			temp[i].loc=i;
+			temp[i].loc=myindex;
 		}
 		fingerprints = new piece[temp.length-shortener];
 		int reindex=0;
