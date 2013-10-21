@@ -7,8 +7,6 @@ public class DistanceFinder {
 
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int numberOfProblems= ap.nextInt("How many problems are there?");
-		//int numberOfProblems = 20;
-		//int i=0; <-i'm deleting this because you only use it within the FOR loop as an iterator
 		int [] pOrNPValue = new int [numberOfProblems];
 		int [] bestCaseValue = new int [numberOfProblems];
 		int [] averageCaseValue = new int [numberOfProblems];
@@ -16,10 +14,8 @@ public class DistanceFinder {
 		int [] linesOfCodeValue = new int [numberOfProblems];
 		int [] runtimeConstantValue = new int [numberOfProblems];
 
-		int l =0;
-		int m =0;
-
-
+		int l=0;
+		int m=0;
 
 		//Note: these numbers CANNOT be changed mid program
 		final int ok = 0;
@@ -40,6 +36,7 @@ public class DistanceFinder {
 				pOrNPValue[i]=0;
 			}else{
 				pOrNPValue[i]=1;
+			
 				/*did you mean to close your else loop here?  the way you have it, P problems (pOrNP==0) do not get evaluated below
 				 * 
 				 */
@@ -162,11 +159,9 @@ public class DistanceFinder {
 				int string6 = ap.nextInt("Run Time Constant");
 				runtimeConstantValue[i]=string6;
 				Math.round(string6);
-				System.out.println(i + ": " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i]);
+				System.out.println(i + ": " + pOrNPValue[i]+ ", " + bestCaseValue[i]+ ", " + averageCaseValue[i]+ ", " + worstCaseValue[i]+ ", " + linesOfCodeValue[i] + ", " + runtimeConstantValue[i] + "\n");
 			}
 
-
-			// here the program needs to take the elements of two random problems that are input into the system
 
 		}
 		int [][] probs = new int[numberOfProblems][6];
@@ -180,7 +175,7 @@ public class DistanceFinder {
 			probs[i][5]=runtimeConstantValue[i];
 		}
 		double [][] distance = new double [numberOfProblems][numberOfProblems];
-		//speaking of inefficiency....look at this next part
+		
 		for(int i = 0; i<numberOfProblems; i++)
 		{
 			Arrays.fill(distance[i], Double.NaN); //REMEMBER
@@ -192,13 +187,13 @@ public class DistanceFinder {
 					dist+=Math.pow( (double) (probs[i][k]-probs[j][k]) , 2.0);
 				}
 				distance[i][j]=Math.sqrt(dist);
-				System.out.println("Distance between points "+i+" and "+j+" = " + distance[i][j] );
+				System.out.println("Distance between points "+i+" and "+j+" = " + distance[i][j] + "\n");
 			}
 		}
 		try
 		{
 			PrintWriter writer = new PrintWriter("DistanceOutput.txt","UTF-8");
-			writer.write("#\tP-NP\tBest\tAvg\tWorst\tlines\tConstant\n");
+			writer.write("\tP-NP,\tBest,\tAvg,\tWorst,\tlines,\tConstant,\n");
 			writer.println();
 			for(int i=0; i<numberOfProblems; i++)
 			{
@@ -224,18 +219,18 @@ public class DistanceFinder {
 		}
 		catch(FileNotFoundException bad)
 		{
-			System.out.println("SHIT!");
+			System.out.println("NOT TODAY!");
 		}
 		catch(UnsupportedEncodingException alsoBad)
 		{
-			System.out.println("FUCK!");
+			System.out.println("FALSE!");
 		}
 		finally
 		{
 			System.out.println("Dumped to file");
 		}
 		System.out.println("Number of P Problems = "+ l);
-		System.out.println("Number of P Problems = "+ m);
+		System.out.println("Number of NP Problems = "+ m);
 
 	}
 }
