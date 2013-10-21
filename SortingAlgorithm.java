@@ -11,7 +11,10 @@ public class SortingAlgorithm {
 		int pProblems [][] = new int [l][6];
 		int NPProblems [][] = new int [m][6];
 		
-		if [1][0]==0
+		if ([l][0]==[l+1][0]){
+			[][]=[][];
+			[][]=[][]
+		}
 
 
 
