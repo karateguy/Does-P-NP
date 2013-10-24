@@ -6,22 +6,15 @@ import java.util.Arrays;
 public class DocData {
 
 	public piece[] fingerprints;
-	public int docsize;
+	public int[] hashprints;
+	public final int docsize;
 	private String normalized;
 	public static String normalize(String bad)
 	{
 		String lower = bad.toLowerCase();
-		String last="";
-		String next=lower;
-		do
-		{
-			last=next;
-			next=next.replaceAll(" ", "");
-			//next=next.replaceAll(" \n", " ");
-			next=next.replaceAll("\n", "");
-		}
-		while(next!=last);
-		return next;
+		lower=lower.replaceAll(" ", "");
+		lower=lower.replaceAll("\n", "");
+		return lower;
 	}
 	public static String[] namezipper(piece[] pieces)
 	{
@@ -35,16 +28,22 @@ public class DocData {
 		for(int i=0; i<pieces.length; i++) locs[i]=pieces[i].loc;
 		return locs;
 	}
+	public static int[] hashzipper(piece[] pieces)
+	{
+		int[] hashes = new int[pieces.length];
+		for(int i=0; i<hashes.length; i++) hashes[i]= new Integer(pieces[i].hashCode());
+		return hashes;
+	}
 	public static piece[] unduplicate(piece[] first)
 	{
 		piece[] intermediate = new piece [first.length];
-		int []namezip = loczipper(first);
+		int []namezip = hashzipper(first);
 		int rems=0;
 		intermediate[first.length-1]= new piece();
 		intermediate[first.length-1]=first[first.length-1];
 		for(int i=0; i<first.length-1; i++)
 		{
-			boolean unique=Arrays.asList(Arrays.copyOfRange(namezip, i+1, first.length)).contains(first[i].loc);
+			boolean unique=Arrays.asList(Arrays.copyOfRange(namezip, i+1, first.length)).contains(first[i].hashCode());
 			unique=!unique;
 			if(unique) intermediate[i]=new piece(first[i]);
 			else
@@ -89,13 +88,13 @@ public class DocData {
 			in.close();
 		}
 		if(windowsize==0) windowsize= (int) (0.5*ksize)+1;
-		normalized=normalize(raw);
-		docsize = normalized.length();
-		String [] grams = new String[normalized.length() - ksize];
+		this.normalized=normalize(raw);
+		this.docsize = this.normalized.length();
+		String [] grams = new String[this.normalized.length() - ksize];
 		for(int i =0; i<grams.length; i++)
 		{
 			char [] gram  = new char [ksize];
-			for(int j=0; j<ksize; j++) gram[j]=normalized.charAt(i+j);
+			for(int j=0; j<ksize; j++) gram[j]=this.normalized.charAt(i+j);
 			grams[i]=new String(gram);
 		}
 		piece [] temp = new piece[grams.length - windowsize];
@@ -114,26 +113,30 @@ public class DocData {
 			grams[myindex]="";
 			temp[i].loc=myindex;
 		}
-		fingerprints = new piece[temp.length-shortener];
+		this.fingerprints = new piece[temp.length-shortener];
 		int reindex=0;
-		for(int i=0; i<fingerprints.length; i++)
+		for(int i=0; i<this.fingerprints.length; i++)
 		{
 			while(temp[i+reindex].val=="") reindex++;
-			fingerprints[i]=new piece(temp[i+reindex]);
+			this.fingerprints[i]=new piece(temp[i+reindex]);
 		}
-		System.out.println("Created "+fingerprints.length+" unique ingerprints.");
+		this.fingerprints = unduplicate(this.fingerprints);
+		this.hashprints = hashzipper(this.fingerprints);
+		Arrays.sort(this.hashprints);
+		//for(int i=0; i<this.fingerprints.length; i++) this.hashprints[i]=this.fingerprints[i].hashCode();
+		System.out.println("Created "+this.fingerprints.length+" unique ingerprints.");
 	}
 	public DocData(DocData parent)
 	{
-		fingerprints=new piece[parent.fingerprints.length];
+		this.fingerprints=new piece[parent.fingerprints.length];
 		for(int i=0; i<parent.fingerprints.length; i++)
 		{
-			fingerprints[i]=new piece();
-			fingerprints[i].val=new String(parent.fingerprints[i].val);
-			fingerprints[i].loc=parent.fingerprints[i].loc;
+			this.fingerprints[i]=new piece(parent.fingerprints[i]);
 		}
-		docsize=parent.docsize;
-		normalized=new String(parent.normalized);
+		this.hashprints=hashzipper(parent.fingerprints);
+		Arrays.sort(this.hashprints);
+		this.docsize=parent.docsize;
+		this.normalized=new String(parent.normalized);
 	}
 
 }
