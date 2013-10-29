@@ -1,26 +1,12 @@
-import java.io.DataInputStream;	
-import java.io.FileInputStream;
-
-
 
 public class SortingAlgorithm {
-	public static void main(String[] args) {
+	
+	int [][]Problem1= new int [l][6];
+	int [][]Problem2= new int [l+1][6];
+	
+	// comparing problem 1 and problem 2 values
+	
+	if()
+	
 
-		DataInputStream reader = new DataInputStream(new FileInputStream("DistanceOutput.txt"));
-
-		int pProblems [][] = new int [l][6];
-		int NPProblems [][] = new int [m][6];
-		
-		if ([l][0]==[l+1][0]){
-			[][]=[][];
-			[][]=[][]
-		}
-
-
-
-
-
-
-	}
-}
 
