@@ -119,7 +119,7 @@ public class IOSimplicity {
 	 * 
 	 * @param text
 	 * @return true if text was written to the file
-	 * <p> note that no text is saved to the file until the .reset() or .updateWriter() methods are used
+	 * <p> note that no text is saved to the file until the .reset() method is used
 	 */
 	public boolean write(String text)
 	{
@@ -141,7 +141,7 @@ public class IOSimplicity {
 	/**
 	 * 
 	 * @return true if the object's output buffer was written to the file
-	 * <p> note that no text is saved to the file until the .reset() or .updateWriter() methods are used
+	 * <p> note that no text is saved to the file until the .reset()  method is used
 	 */
 	public boolean writeBuffer()
 	{
@@ -161,17 +161,7 @@ public class IOSimplicity {
 	}
 	
 	
-	/**
-	 * Saves changes to the file and keeps the writer open
-	 */
-	public void updateWriter()
-	{
-		this.writer.close();
-		this.mode='N';
-		this.writeMode(currentFile);
-		this.saveOldContents();
-		this.writeBuffer();
-	}
+
 	
 	
 	/**
@@ -232,15 +222,5 @@ public class IOSimplicity {
 	}
 	
 	
-	public static void main(String[] args)
-	{
-		IOSimplicity test = new IOSimplicity();
-		test.writeMode("C:\\Users\\Aaron\\Desktop\\fish.txt");
-		test.write("Hello!");
-		test.updateWriter();
-		ArgsProcessor ap = new ArgsProcessor(args);
-		ap.nextInt("contents now written");
-		test.reset();
-	}
 
 }
